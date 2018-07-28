@@ -54,7 +54,7 @@ function app(user) {
     //write user info to the page:
     console.log("This is UserName: ", usersName);
     console.log("This is User Image: ", usersImage);
-    $("#userName").text("Welcome " & user.displayName & "!");
+    $("#userName").html("Welcome " & user.displayName & "!");
     $("#userImage").attr("src", user.photoURL);
     //API KEYS
     var ip;
