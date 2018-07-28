@@ -1,3 +1,5 @@
+var usersName;
+var usersImage;
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyAPRCKjfuZwRCZcqgD1TV1gs-6QIz4X3Ic",
@@ -32,6 +34,7 @@ $("#signIn").on("click", function login() {
             //login happened
             console.log("Sign In Successful")
             app(user);
+
         }
         //if a user does not exist, then we need to force the user to sign in via google
         else {
@@ -49,8 +52,9 @@ $("#testingRegion").hide();
 
 function app(user) {
     //write user info to the page:
-    console.log(user);
-    $("#userName").text("Welcome "&user.displayName&"!");
+    console.log("This is UserName: ", usersName);
+    console.log("This is User Image: ", usersImage);
+    $("#userName").text("Welcome " & user.displayName & "!");
     $("#userImage").attr("src", user.photoURL);
     //API KEYS
     var ip;
