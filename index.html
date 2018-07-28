@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Watch Next</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap core CSS -->
+  <link href="./assets/css/bootstrap-landing-page-template/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="./assets/css/bootstrap-landing-page-template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="./assets/css/bootstrap-landing-page-template/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet"
+    type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="./assets/css/bootstrap-landing-page-template/css/landing-page.min.css" rel="stylesheet">
+
+  <!-- Results styling -->
+  <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/cyborg/bootstrap.min.css">
+
+  <!-- Custom Favicon -->
+  <link rel="icon" type="image/png" sizes="96x96" href="./assets/css/custom-css/teamFavicon.png">
+
+  <!-- Custom CSS Styling (As Needed) -->
+  <link rel="stylesheet" type="text/css" href="./assets/css/custom-css/customizeTemplate.css">
+
+  <!-- jquery CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- Moment.js Reference -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+
+
+</head>
+
+<body>
+  <!-- The body is split into two sections 1. Custom "Watch Next" Content and 2. the HTML body content from the landing page template -->
+  <!-- 1. Custom "Watch Next" content -->
+  <div id="testingRegion">
+    <h1>Find What's Next</h1>
+
+    <form>
+
+      <label>Grace Note Movie Show Time Lookup:</label>
+      <input id="gnMovies" type="submit">
+      <br>
+      <label>Grace Note What's on TV Search:</label>
+      <input id="gnTV" type="submit">
+      <br>
+      <label>Grace Note What Movies are on TV Search:</label>
+      <input id="gnTVMovies" type="submit">
+    </form>
+
+    <div id="apiFeedback"></div>
+  </div>
+  <!-- 2. HTML body content from the landing page template -->
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-light bg-light static-top">
+    <div class="container" id="greeting">
+      <span id="userName"></span>!
+      <img id="userImage">
+    </div>
+    <div class="container">
+      <button class="btn btn-primary" type="button" id="signIn">Sign In</button>
+      <button class="btn btn-primary" type="button" id="logout">Logout</button>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">Search for a Movie</h1>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <form id="searchForm">
+            <div class="form-row">
+              <div class="col-12 col-md-9 mb-2 mb-md-0">
+                <input type="text" class="form-control form-control-lg" id="searchText" placeholder="Enter movie title here...">
+              </div>
+              <div class="col-12 col-md-3">
+                <button type="submit" class="btn btn-block btn-lg btn-primary">Results Below!</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Icons Grid -->
+  <section class="features-icons bg-light text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-rocket m-auto text-primary"></i>
+            </div>
+            <h3>Our Suggested Pick</h3>
+            <p class="lead">Allow us to provide our own content recommendation</p>
+          </div>
+          <button type="submit" id="ourSuggestedPick" class="btn btn-block btn-md btn-primary">Submit</button>
+        </div>
+        <div class="col-lg-3">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-film m-auto text-primary"></i>
+            </div>
+            <h3>In Theaters Now</h3>
+            <p class="lead mb-0">See what movies are playing in your area</p>
+          </div>
+          <button type="submit" id="inTheatersNow" class="btn btn-block btn-md btn-primary">Submit</button>
+        </div>
+        <div class="col-lg-3">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-control-play m-auto text-primary"></i>
+            </div>
+            <h3>Currently on TV</h3>
+            <p class="lead mb-0">Find shows and movies playing on your cable box</p>
+          </div>
+          <button type="submit" id="currentlyOnTV" class="btn btn-block btn-md btn-primary">Submit</button>
+        </div>
+        <div class="col-lg-3">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="icon-globe-alt m-auto text-primary"></i>
+            </div>
+            <h3>Discovery Quiz</h3>
+            <p class="lead mb-0">Use our celebrity quiz to find a film or show that fits you</p>
+          </div>
+          <button type="submit" id="discoveryQuiz" class="btn btn-block btn-md btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    </header>
+
+    <div class="container">
+      <button class="btn btn-primary" type="button" id="moviesInTheaters" hidden>Movies in Theaters</button>
+      <button class="btn btn-primary" type="button" id="moviesOnTV" hidden>Movies on TV</button>
+      <button class="btn btn-primary" type="button" id="tvShowsOnTV" hidden>TV Shows on TV</button>
+      <button class="btn btn-primary" type="button" id="celebrity" hidden>Celebrity Favorites</button>
+      <button class="btn btn-primary" type="button" id="inkBlot" hidden>Rorschach</button>
+    </div>
+  </section>
+
+  <!-- Display subbuttons after certain main buttons are selected -->
+
+  <!-- Display content from Search Bar -->
+  <div class="container">
+    <div id="movies" class="row"></div>
+  </div>
+
+
+
+  <!-- Footer -->
+  <footer class="footer bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item">
+              <a href="#">About</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Contact</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+            <li class="list-inline-item">&sdot;</li>
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+          </ul>
+          <p class="text-muted small mb-4 mb-lg-0">&copy; Watch Next 2018. All Rights Reserved.</p>
+        </div>
+        <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fa fa-facebook fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item mr-3">
+              <a href="#">
+                <i class="fa fa-twitter fa-2x fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-instagram fa-2x fa-fw"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="./assets/css/bootstrap-landing-page-template/vendor/jquery/jquery.min.js"></script>
+  <script src="./assets/css/bootstrap-landing-page-template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Axios needs to be linked for the Search Bar -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- link to project js -->
+  <script src="./assets/javascript/app.js"></script>
+
+</body>
+
+</html>
