@@ -378,5 +378,4 @@ function app(user) {
     getMovie();
 
 };
-//this code makes login the first thing to run when the page loads. User cannot do anything with the app until they sign in.
-window.onload = login;
+
