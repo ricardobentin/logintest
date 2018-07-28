@@ -12,7 +12,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 //google authentication
 //function to log a user out
-$("#logout").on("click", function (user) {
+$("#logout").on("click", function () {
     event.preventDefault();
     console.log("logout was clicked!");
     firebase.auth().signOut().then(function () {
@@ -23,7 +23,7 @@ $("#logout").on("click", function (user) {
         console.log("ERROR: Sign Out Failed");
     });
 });
-$("#signIn").on("click", function login(user) {
+$("#signIn").on("click", function login() {
     event.preventDefault();
     console.log("signIn was clicked!");
     //newLogin checks if a user exists, if it does the login happened and passes user to app function
