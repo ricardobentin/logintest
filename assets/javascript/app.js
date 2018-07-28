@@ -34,6 +34,8 @@ $("#signIn").on("click", function login() {
             //login happened
             console.log("Sign In Successful")
             app(user);
+            usersName = user.displayName;
+            usersImage = user.photoURL;
 
         }
         //if a user does not exist, then we need to force the user to sign in via google
