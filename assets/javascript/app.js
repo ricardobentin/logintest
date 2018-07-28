@@ -32,7 +32,7 @@ $("#signIn").on("click", function login() {
             //login happened
             console.log("Sign In Successful")
             app(user);
-            $("#userName").text(user.displayName);
+            $("#userName").text("Welcome "&user.displayName&"!");
             $("#userImage").attr("src", user.photoURL);
 
         }
