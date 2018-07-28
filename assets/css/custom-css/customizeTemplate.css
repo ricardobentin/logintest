@@ -31,3 +31,12 @@ h3 {
     font-size: 18px;
     font-weight: bold;
   }
+
+  #greeting{
+    color: white;
+  }
+
+  #userImage{
+    width: 100%;
+    height: 50px;
+  }
