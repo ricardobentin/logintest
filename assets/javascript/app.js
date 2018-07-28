@@ -32,9 +32,6 @@ $("#signIn").on("click", function login() {
             //login happened
             console.log("Sign In Successful")
             app(user);
-            $("#userName").text("Welcome "&user.displayName&"!");
-            $("#userImage").attr("src", user.photoURL);
-
         }
         //if a user does not exist, then we need to force the user to sign in via google
         else {
@@ -53,7 +50,8 @@ $("#testingRegion").hide();
 function app(user) {
     //write user info to the page:
     console.log(user);
-
+    $("#userName").text("Welcome "&user.displayName&"!");
+    $("#userImage").attr("src", user.photoURL);
     //API KEYS
     var ip;
     var gnQ;
